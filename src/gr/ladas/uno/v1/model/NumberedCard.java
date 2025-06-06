@@ -1,4 +1,7 @@
-package UNO;
+package gr.ladas.uno.v1.model;
+
+import gr.ladas.uno.v1.enums.Color;
+import gr.ladas.uno.v1.enums.Effect;
 
 public class NumberedCard extends Card {
 	
@@ -29,5 +32,10 @@ public class NumberedCard extends Card {
     public void setNumber(Short number) {
         this.number = number;
     }
+
+	@Override
+	public String toString() {
+		return color + " " + number;
+	}
     
 }

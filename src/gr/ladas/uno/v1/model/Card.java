@@ -1,4 +1,6 @@
-package UNO;
+package gr.ladas.uno.v1.model;
+
+import gr.ladas.uno.v1.enums.Effect;
 
 public class Card {
 	
