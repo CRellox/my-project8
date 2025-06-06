@@ -1,126 +1,167 @@
 package UNO;
 
+import java.util.ArrayList;
+
 public class Deck {
 
-    // Red Standard Cards
-    Cards card1R1 = new Cards("Red","1");
-    Cards card1R2 = new Cards("Red","1");
-    Cards card2R1 = new Cards("Red","2");
-    Cards card2R2 = new Cards("Red","2");
-    Cards card3R1 = new Cards("Red","3");
-    Cards card3R2 = new Cards("Red","3");
-    Cards card4R1 = new Cards("Red","4");
-    Cards card4R2 = new Cards("Red","4");
-    Cards card5R1 = new Cards("Red","5");
-    Cards card5R2 = new Cards("Red","5");
-    Cards card6R1 = new Cards("Red","6");
-    Cards card6R2 = new Cards("Red","6");
-    Cards card7R1 = new Cards("Red","7");
-    Cards card7R2 = new Cards("Red","7");
-    Cards card8R1 = new Cards("Red","8");
-    Cards card8R2 = new Cards("Red","8");
-    Cards card9R1 = new Cards("Red","9");
-    Cards card9R2 = new Cards("Red","9");
+	ArrayList<Card> listOfCards = new ArrayList<>();
+	
+	// Red Standard Cards
+	Card cardR0 = new NumberedCard(Color.RED, 0, Effect.NUMBER);
+	Card cardR1 = new NumberedCard(Color.RED, 1, Effect.NUMBER);
+	Card cardR2 = new NumberedCard(Color.RED, 2, Effect.NUMBER);
+	Card cardR3 = new NumberedCard(Color.RED, 3, Effect.NUMBER);
+	Card cardR4 = new NumberedCard(Color.RED, 4, Effect.NUMBER);
+	Card cardR5 = new NumberedCard(Color.RED, 5, Effect.NUMBER);
+	Card cardR6 = new NumberedCard(Color.RED, 6, Effect.NUMBER);
+	Card cardR7 = new NumberedCard(Color.RED, 7, Effect.NUMBER);
+	Card cardR8 = new NumberedCard(Color.RED, 8, Effect.NUMBER);
+	Card cardR9 = new NumberedCard(Color.RED, 9, Effect.NUMBER);
 
-    // Red Special Cards
-    SpecialCards cardRR1 = new SpecialCards("Red","Reverse");
-    SpecialCards cardRR2 = new SpecialCards("Red","Reverse");
-    SpecialCards cardSR1 = new SpecialCards("Red","Skip");
-    SpecialCards cardSR2 = new SpecialCards("Red","Skip");
-    SpecialCards cardP2R1 = new SpecialCards("Red","Plus2");
-    SpecialCards cardP2R2 = new SpecialCards("Red","Plus2");
+	// Red Special Cards
+	SpecialCard cardRR = new SpecialCard(Color.RED, Effect.REVERSE);
+	SpecialCard cardRS = new SpecialCard(Color.RED, Effect.SKIP);
+	SpecialCard cardRP2 = new SpecialCard(Color.RED, Effect.PLUS2);
 
-    // Blue Standard Cards
-    Cards card1B1 = new Cards("Blue","1");
-    Cards card1B2 = new Cards("Blue","1");
-    Cards card2B1 = new Cards("Blue","2");
-    Cards card2B2 = new Cards("Blue","2");
-    Cards card3B1 = new Cards("Blue","3");
-    Cards card3B2 = new Cards("Blue","3");
-    Cards card4B1 = new Cards("Blue","4");
-    Cards card4B2 = new Cards("Blue","4");
-    Cards card5B1 = new Cards("Blue","5");
-    Cards card5B2 = new Cards("Blue","5");
-    Cards card6B1 = new Cards("Blue","6");
-    Cards card6B2 = new Cards("Blue","6");
-    Cards card7B1 = new Cards("Blue","7");
-    Cards card7B2 = new Cards("Blue","7");
-    Cards card8B1 = new Cards("Blue","8");
-    Cards card8B2 = new Cards("Blue","8");
-    Cards card9B1 = new Cards("Blue","9");
-    Cards card9B2 = new Cards("Blue","9");
+	// Blue Standard Cards
+	Card cardB0 = new NumberedCard(Color.BLUE, 0, Effect.NUMBER);
+	Card cardB1 = new NumberedCard(Color.BLUE, 1, Effect.NUMBER);
+	Card cardB2 = new NumberedCard(Color.BLUE, 2, Effect.NUMBER);
+	Card cardB3 = new NumberedCard(Color.BLUE, 3, Effect.NUMBER);
+	Card cardB4 = new NumberedCard(Color.BLUE, 4, Effect.NUMBER);
+	Card cardB5 = new NumberedCard(Color.BLUE, 5, Effect.NUMBER);
+	Card cardB6 = new NumberedCard(Color.BLUE, 6, Effect.NUMBER);
+	Card cardB7 = new NumberedCard(Color.BLUE, 7, Effect.NUMBER);
+	Card cardB8 = new NumberedCard(Color.BLUE, 8, Effect.NUMBER);
+	Card cardB9 = new NumberedCard(Color.BLUE, 9, Effect.NUMBER);
 
-    // Blue Special Cards
-    SpecialCards cardRB1 = new SpecialCards("Blue","Reverse");
-    SpecialCards cardRB2 = new SpecialCards("Blue","Reverse");
-    SpecialCards cardSB1 = new SpecialCards("Blue","Skip");
-    SpecialCards cardSB2 = new SpecialCards("Blue","Skip");
-    SpecialCards cardP2B1 = new SpecialCards("Blue","Plus2");
-    SpecialCards cardP2B2 = new SpecialCards("Blue","Plus2");
+	// Blue Special Cards
+	SpecialCard cardBR = new SpecialCard(Color.BLUE, Effect.REVERSE);
+	SpecialCard cardBS = new SpecialCard(Color.BLUE, Effect.SKIP);
+	SpecialCard cardBP2 = new SpecialCard(Color.BLUE, Effect.PLUS2);
 
-    // Green Standard Cards
-    Cards card1G1 = new Cards("Green","1");
-    Cards card1G2 = new Cards("Green","1");
-    Cards card2G1 = new Cards("Green","2");
-    Cards card2G2 = new Cards("Green","2");
-    Cards card3G1 = new Cards("Green","3");
-    Cards card3G2 = new Cards("Green","3");
-    Cards card4G1 = new Cards("Green","4");
-    Cards card4G2 = new Cards("Green","4");
-    Cards card5G1 = new Cards("Green","5");
-    Cards card5G2 = new Cards("Green","5");
-    Cards card6G1 = new Cards("Green","6");
-    Cards card6G2 = new Cards("Green","6");
-    Cards card7G1 = new Cards("Green","7");
-    Cards card7G2 = new Cards("Green","7");
-    Cards card8G1 = new Cards("Green","8");
-    Cards card8G2 = new Cards("Green","8");
-    Cards card9G1 = new Cards("Green","9");
-    Cards card9G2 = new Cards("Green","9");
+	// Green Standard Cards
+	Card cardG0 = new NumberedCard(Color.GREEN, 0, Effect.NUMBER);
+	Card cardG1 = new NumberedCard(Color.GREEN, 1, Effect.NUMBER);
+	Card cardG2 = new NumberedCard(Color.GREEN, 2, Effect.NUMBER);
+	Card cardG3 = new NumberedCard(Color.GREEN, 3, Effect.NUMBER);
+	Card cardG4 = new NumberedCard(Color.GREEN, 4, Effect.NUMBER);
+	Card cardG5 = new NumberedCard(Color.GREEN, 5, Effect.NUMBER);
+	Card cardG6 = new NumberedCard(Color.GREEN, 6, Effect.NUMBER);
+	Card cardG7 = new NumberedCard(Color.GREEN, 7, Effect.NUMBER);
+	Card cardG8 = new NumberedCard(Color.GREEN, 8, Effect.NUMBER);
+	Card cardG9 = new NumberedCard(Color.GREEN, 9, Effect.NUMBER);
 
-    // Green Special Cards
-    SpecialCards cardRG1 = new SpecialCards("Green","Reverse");
-    SpecialCards cardRG2 = new SpecialCards("Green","Reverse");
-    SpecialCards cardSG1 = new SpecialCards("Green","Skip");
-    SpecialCards cardSG2 = new SpecialCards("Green","Skip");
-    SpecialCards cardP2G1 = new SpecialCards("Green","Plus2");
-    SpecialCards cardP2G2 = new SpecialCards("Green","Plus2");
+	// Green Special Cards
+	SpecialCard cardGR = new SpecialCard(Color.GREEN, Effect.REVERSE);
+	SpecialCard cardGS = new SpecialCard(Color.GREEN, Effect.SKIP);
+	SpecialCard cardGP2 = new SpecialCard(Color.GREEN, Effect.PLUS2);
 
-    // Yellow Standard Cards
-    Cards card1Y1 = new Cards("Yellow","1");
-    Cards card1Y2 = new Cards("Yellow","1");
-    Cards card2Y1 = new Cards("Yellow","2");
-    Cards card2Y2 = new Cards("Yellow","2");
-    Cards card3Y1 = new Cards("Yellow","3");
-    Cards card3Y2 = new Cards("Yellow","3");
-    Cards card4Y1 = new Cards("Yellow","4");
-    Cards card4Y2 = new Cards("Yellow","4");
-    Cards card5Y1 = new Cards("Yellow","5");
-    Cards card5Y2 = new Cards("Yellow","5");
-    Cards card6Y1 = new Cards("Yellow","6");
-    Cards card6Y2 = new Cards("Yellow","6");
-    Cards card7Y1 = new Cards("Yellow","7");
-    Cards card7Y2 = new Cards("Yellow","7");
-    Cards card8Y1 = new Cards("Yellow","8");
-    Cards card8Y2 = new Cards("Yellow","8");
-    Cards card9Y1 = new Cards("Yellow","9");
-    Cards card9Y2 = new Cards("Yellow","9");
+	// Yellow Standard Cards
+	Card cardY0 = new NumberedCard(Color.YELLOW, 0, Effect.NUMBER);
+	Card cardY1 = new NumberedCard(Color.YELLOW, 1, Effect.NUMBER);
+	Card cardY2 = new NumberedCard(Color.YELLOW, 2, Effect.NUMBER);
+	Card cardY3 = new NumberedCard(Color.YELLOW, 3, Effect.NUMBER);
+	Card cardY4 = new NumberedCard(Color.YELLOW, 4, Effect.NUMBER);
+	Card cardY5 = new NumberedCard(Color.YELLOW, 5, Effect.NUMBER);
+	Card cardY6 = new NumberedCard(Color.YELLOW, 6, Effect.NUMBER);
+	Card cardY7 = new NumberedCard(Color.YELLOW, 7, Effect.NUMBER);
+	Card cardY8 = new NumberedCard(Color.YELLOW, 8, Effect.NUMBER);
+	Card cardY9 = new NumberedCard(Color.YELLOW, 9, Effect.NUMBER);
 
-    // Yellow Special Cards
-    SpecialCards cardRY1 = new SpecialCards("Yellow","Reverse");
-    SpecialCards cardRY2 = new SpecialCards("Yellow","Reverse");
-    SpecialCards cardSY1 = new SpecialCards("Yellow","Skip");
-    SpecialCards cardSY2 = new SpecialCards("Yellow","Skip");
-    SpecialCards cardP2Y1 = new SpecialCards("Yellow","Plus2");
-    SpecialCards cardP2Y2 = new SpecialCards("Yellow","Plus2");
+	// Yellow Special Cards
+	SpecialCard cardYR = new SpecialCard(Color.YELLOW, Effect.REVERSE);
+	SpecialCard cardYS = new SpecialCard(Color.YELLOW, Effect.SKIP);
+	SpecialCard cardYP2 = new SpecialCard(Color.YELLOW, Effect.PLUS2);
 
-    // Wild Cards
-    WildCards Wild1 = new WildCards("Wild");
-    WildCards Wild2 = new WildCards("Wild");
-    WildCards Wild3 = new WildCards("Wild");
-    WildCards Wild4 = new WildCards("Wild");
-    WildCards DrawFourCards1 = new WildCards("Wild Draw Four");
-    WildCards DrawFourCards2 = new WildCards("Wild Draw Four");
-    WildCards DrawFourCards3 = new WildCards("Wild Draw Four");
-    WildCards DrawFourCards4 = new WildCards("Wild Draw Four");
+	// Wild Cards
+	WildCard Wild = new WildCard(Effect.CHANGE_COLOR);
+	WildCard DrawFourCards = new WildCard(Effect.CHANGE_COLOR_PLUS4);
+	
+	
+	
+	
+	
+	public Deck() {
+		
+	}
+	
+	public ArrayList<Card> getListOfAllCards() {
+		// Red
+		
+		listOfCards.add(cardR0);
+		listOfCards.add(cardR1);
+		listOfCards.add(cardR2);
+		listOfCards.add(cardR3);
+		listOfCards.add(cardR4);
+		listOfCards.add(cardR5);
+		listOfCards.add(cardR6);
+		listOfCards.add(cardR7);
+		listOfCards.add(cardR8);
+		listOfCards.add(cardR9);
+		
+		listOfCards.add(cardRR);
+		listOfCards.add(cardRS);
+		listOfCards.add(cardRP2);
+		
+		
+		
+		// Green
+		
+		listOfCards.add(cardG0);
+		listOfCards.add(cardG1);
+		listOfCards.add(cardG2);
+		listOfCards.add(cardG3);
+		listOfCards.add(cardG4);
+		listOfCards.add(cardG5);
+		listOfCards.add(cardG6);
+		listOfCards.add(cardG7);
+		listOfCards.add(cardG8);
+		listOfCards.add(cardG9);
+		
+		listOfCards.add(cardGR);
+		listOfCards.add(cardGS);
+		listOfCards.add(cardGP2);
+
+		
+		
+		// Blue
+		
+		listOfCards.add(cardB0);
+		listOfCards.add(cardB1);
+		listOfCards.add(cardB2);
+		listOfCards.add(cardB3);
+		listOfCards.add(cardB4);
+		listOfCards.add(cardB5);
+		listOfCards.add(cardB6);
+		listOfCards.add(cardB7);
+		listOfCards.add(cardB8);
+		listOfCards.add(cardB9);
+		
+		listOfCards.add(cardBR);
+		listOfCards.add(cardBS);
+		listOfCards.add(cardBP2);
+		
+		
+		// Yellow
+		
+		listOfCards.add(cardY0);
+		listOfCards.add(cardY1);
+		listOfCards.add(cardY2);
+		listOfCards.add(cardY3);
+		listOfCards.add(cardY4);
+		listOfCards.add(cardY5);
+		listOfCards.add(cardY6);
+		listOfCards.add(cardY7);
+		listOfCards.add(cardY8);
+		listOfCards.add(cardY9);
+		
+		listOfCards.add(cardYR);
+		listOfCards.add(cardYS);
+		listOfCards.add(cardYP2);
+		
+		
+		return listOfCards;
+	}
+	
 }
