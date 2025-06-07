@@ -14,10 +14,7 @@ public class MyUnoApplication {
 
 	private static BotHand botCards;
 	
-	
-	/**
-	 * @param args
-	 */
+
 	public static void main(String[] args) {
 		System.out.println("UNO starting...\n");
 
@@ -42,7 +39,7 @@ public class MyUnoApplication {
 				//TODO Print the cards from your hand...
 				
 				
-				
+
 				int userCardOption = System.in.read();
 				
 				switch (userCardOption) {
