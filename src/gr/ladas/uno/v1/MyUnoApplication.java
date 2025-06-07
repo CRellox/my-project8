@@ -1,11 +1,18 @@
 package gr.ladas.uno.v1;
 
+import gr.ladas.uno.v1.model.NumberedCard;
+import gr.ladas.uno.v1.model.SpecialCard;
+import gr.ladas.uno.v1.model.WildCard;
+
 import java.io.IOException;
 
 public class MyUnoApplication {
 	
-	private static Deck availableCardsDeck;
-	
+	private static Deck deck;
+
+	private static MyHand myCards;
+
+	private static BotHand botCards;
 	
 	
 	/**
@@ -13,15 +20,23 @@ public class MyUnoApplication {
 	 */
 	public static void main(String[] args) {
 		System.out.println("UNO starting...\n");
-		
-		initDeck();
-		
+
 		System.out.println("\nDo you want to play? Type y/n");
 		
 		try {
 			int userOption = System.in.read();
 			
 			if (userOption == 'y') {
+				initDeck();
+
+				drawMyCards();
+
+				drawBotCards();
+
+				System.out.println(myCards.getMyWildCards());
+				System.out.println(myCards.getMyNumberedCards());
+				System.out.println(myCards.getMySpecialCards());
+
 				System.out.println("\nSelect a card from your hand:");
 				
 				//TODO Print the cards from your hand...
@@ -70,18 +85,49 @@ public class MyUnoApplication {
 				System.out.println("\nUNO terminated!");
 			}
 		} catch (IOException e) {
-			System.out.println("Error occured: " + e.getMessage());
+			System.out.println("Error occurred: " + e.getMessage());
 		}
 	}
 	
 	private static void initDeck() {
-		availableCardsDeck = new Deck();
+		deck = new Deck();
 		
-		availableCardsDeck.createListOfAllCards();
+		deck.createListOfAllCards();
 		
 		System.out.println("Printing deck...\n");
 		
-		System.out.println(availableCardsDeck.getListOfCards());
+		System.out.println(deck.getListOfCards());
 	}
-	
+
+	private static void drawMyCards() {
+		myCards = new MyHand();
+
+		for (int i = 0; i < 7; i++) {
+			Object aDrawedCard = deck.getListOfCards().remove(0);
+
+			if (aDrawedCard instanceof NumberedCard) {
+				myCards.addNumberedCard((NumberedCard) aDrawedCard);
+			} else if (aDrawedCard instanceof SpecialCard) {
+				myCards.addSpecialCard((SpecialCard) aDrawedCard);
+			} else if (aDrawedCard instanceof WildCard) {
+				myCards.addWildCard((WildCard) aDrawedCard);
+			}
+		}
+	}
+
+	private static void drawBotCards() {
+		botCards = new BotHand();
+
+		for (int i = 0; i < 7; i++) {
+			Object aDrawedCard = deck.getListOfCards().remove(0);
+
+			if (aDrawedCard instanceof NumberedCard) {
+				botCards.addNumberedCard((NumberedCard) aDrawedCard);
+			} else if (aDrawedCard instanceof SpecialCard) {
+				botCards.addSpecialCard((SpecialCard) aDrawedCard);
+			} else if (aDrawedCard instanceof WildCard) {
+				botCards.addWildCard((WildCard) aDrawedCard);
+			}
+		}
+	}
 }

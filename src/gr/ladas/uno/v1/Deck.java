@@ -12,7 +12,7 @@ import gr.ladas.uno.v1.model.WildCard;
 
 public class Deck {
 
-	ArrayList<Card> listOfCards = new ArrayList<>();
+	ArrayList<Object> listOfCards = new ArrayList<>();
 	
 	
 	
@@ -20,11 +20,11 @@ public class Deck {
 
 	}
 	
-	public ArrayList<Card> getListOfCards() {
+	public ArrayList<Object> getListOfCards() {
 		return listOfCards;
 	}
 
-	public ArrayList<Card> createListOfAllCards() {
+	public void createListOfAllCards() {
 		System.out.println("Preparing deck...\n");
 		
 		// Red
@@ -158,8 +158,10 @@ public class Deck {
 		listOfCards.add(new WildCard(Effect.CHANGE_COLOR_PLUS4));
 		listOfCards.add(new WildCard(Effect.CHANGE_COLOR_PLUS4));
 
-		listOfCards.add(new WildCard(Effect.CHANGE_COLOR_PLUS4));
-		listOfCards.add(new WildCard(Effect.CHANGE_COLOR_PLUS4));
+		listOfCards.add(new WildCard(Effect.CHANGE_COLOR));
+		listOfCards.add(new WildCard(Effect.CHANGE_COLOR));
+		listOfCards.add(new WildCard(Effect.CHANGE_COLOR));
+		listOfCards.add(new WildCard(Effect.CHANGE_COLOR));
 		
 		System.out.println("Deck preparation finished!\n");
 		
@@ -168,8 +170,6 @@ public class Deck {
 		Collections.shuffle(listOfCards);
 		
 		System.out.println("Deck shuffled!\n");
-		
-		return listOfCards;
 	}
 
 }
