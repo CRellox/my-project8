@@ -24,7 +24,15 @@ public class MyUnoApplication {
 			int userOption = System.in.read();
 			
 			if (userOption == 'y') {
+				System.out.println("Welcome to UNO!\n");
+
 				initDeck();
+
+				System.out.print("Starter card: ");
+				System.out.println(deck.listOfCards.stream().findAny());
+				System.out.println();
+
+				System.out.println("You play first!");
 
 				drawMyCards();
 
@@ -35,17 +43,7 @@ public class MyUnoApplication {
 				System.out.print(myCards.getMySpecialCards());
 				System.out.println(myCards.getMyWildCards());
 
-				System.out.println();
-
-				System.out.print("First played card: ");
-				System.out.println(deck.listOfCards.stream().findAny());
-
-
-				System.out.println("\n Select a card from your hand:");
-
-
-				
-				
+				System.out.println("\nPlease, select a card from your hand!");
 
 				int userCardOption = System.in.read();
 				
@@ -85,8 +83,11 @@ public class MyUnoApplication {
 				}
 
 				System.out.println("\nUNO: I am still dummy... wait for more updates!");
-			} else {
+
+			} else if (userOption == 'n') {
 				System.out.println("\nUNO terminated!");
+			} else {
+				System.out.println("Wrong choice!\nPlease, try again!\n");
 			}
 		} catch (IOException e) {
 			System.out.println("Error occurred: " + e.getMessage());
