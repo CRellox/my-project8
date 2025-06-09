@@ -85,7 +85,7 @@ public class MyUnoApplication {
 				System.out.println("\nUNO: I am still dummy... wait for more updates!");
 
 			} else if (userOption == 'n') {
-				System.out.println("\nUNO terminated!");
+				System.out.println("\nMaybe next time!\nUNO terminated!");
 			} else {
 				System.out.println("Wrong choice!\nPlease, try again!\n");
 			}
