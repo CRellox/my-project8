@@ -5,7 +5,6 @@ import java.util.Collections;
 
 import gr.ladas.uno.v1.enums.Color;
 import gr.ladas.uno.v1.enums.Effect;
-import gr.ladas.uno.v1.model.Card;
 import gr.ladas.uno.v1.model.NumberedCard;
 import gr.ladas.uno.v1.model.SpecialCard;
 import gr.ladas.uno.v1.model.WildCard;
@@ -164,7 +163,9 @@ public class Deck {
 		listOfCards.add(new WildCard(Effect.CHANGE_COLOR));
 		
 		System.out.println("Deck preparation finished!\n");
-		
+	}
+	
+	public void shuffleDeck() { 
 		System.out.println("Shuffling deck...\n");
 		
 		Collections.shuffle(listOfCards);
