@@ -30,13 +30,20 @@ public class MyUnoApplication {
 
 				drawBotCards();
 
+				System.out.println("Your hand:");
+				System.out.print(myCards.getMyNumberedCards());
+				System.out.print(myCards.getMySpecialCards());
 				System.out.println(myCards.getMyWildCards());
-				System.out.println(myCards.getMyNumberedCards());
-				System.out.println(myCards.getMySpecialCards());
 
-				System.out.println("\nSelect a card from your hand:");
-				
-				//TODO Print the cards from your hand...
+				System.out.println();
+
+				System.out.print("First played card: ");
+				System.out.println(deck.listOfCards.stream().findAny());
+
+
+				System.out.println("\n Select a card from your hand:");
+
+
 				
 				
 
@@ -73,10 +80,10 @@ public class MyUnoApplication {
 						break;
 					default:
 						System.out.println("");
-						
+
 						break;
 				}
-				
+
 				System.out.println("\nUNO: I am still dummy... wait for more updates!");
 			} else {
 				System.out.println("\nUNO terminated!");
@@ -91,9 +98,9 @@ public class MyUnoApplication {
 		
 		deck.createListOfAllCards();
 		
-		System.out.println("Printing deck...\n");
+//		System.out.println("Printing deck...\n");
 		
-		System.out.println(deck.getListOfCards());
+//		System.out.println(deck.getListOfCards());
 	}
 
 	private static void drawMyCards() {
@@ -127,4 +134,6 @@ public class MyUnoApplication {
 			}
 		}
 	}
+
+
 }
