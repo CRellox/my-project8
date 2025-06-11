@@ -9,15 +9,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MyUnoApplication {
-
-	private final static Scanner scanner =new Scanner(System.in);
-
+	private final static Scanner scanner = new Scanner(System.in);
 	private static Deck deck;
-
 	private static MyHand myCards;
-
 	private static BotHand botCards;
-	
 	private static ArrayList<Object> playedCards = new ArrayList<>();
 
 
