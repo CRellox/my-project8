@@ -23,6 +23,7 @@ public class MyUnoApplication {
 
 		while (!userOption.equals("y") && !userOption.equals("n") && !userOption.equals("Y") && !userOption.equals("N")) {
 			System.out.println("Wrong choice!\nPlease, try again!\n");
+			
 			userOption = readInput.next();
 		}
 
@@ -39,47 +40,35 @@ public class MyUnoApplication {
 
 			drawBotCards();
 
-			System.out.println("\n\nPlease, select a card from your hand!");
-
-			String userCardOption = readInput.next();
-
-			switch (userCardOption) {
-				case "1":
-					System.out.println("");
-
-					break;
-				case "2":
-					System.out.println("");
-
-					break;
-				case "3":
-					System.out.println("");
-
-					break;
-				case "4":
-					System.out.println("");
-
-					break;
-				case "5":
-					System.out.println("");
-
-					break;
-				case "6":
-					System.out.println("");
-
-					break;
-				case "7":
-					System.out.println("");
-
-					break;
-				default:
-					System.out.println("\n\nMaybe next time!\nUNO terminated!");
-					break;
-			}
-			System.out.println("\nUNO: I am still dummy... wait for more updates!");
+			String userCardOption;
+			
+			do {
+				printMyHand();
+				
+				userCardOption = readInput.next();
+				
+				while (!userCardOption.equals("*") && userCardOption.equals("1") && userCardOption.equals("2") && userCardOption.equals("3") && userCardOption.equals("4") && userCardOption.equals("5") && userCardOption.equals("6") && userCardOption.equals("7")) {
+					System.out.println("Wrong choice!\nPlease, try again!\n");
+					
+					userCardOption = readInput.next();
+				}
+				
+				if (!userCardOption.equals("*")) {
+					//TODO should play the selected card...
+					
+					//TODO bot should play as well...
+					
+					System.out.println("Last played card: " + playedCards.get(playedCards.size() - 1));
+				}
+			} while (userCardOption.equals("1") || userCardOption.equals("2") || userCardOption.equals("3") || userCardOption.equals("4") || userCardOption.equals("5") || userCardOption.equals("6") || userCardOption.equals("7"));
+			
+			System.out.println("\nBye for now!");
 		} else {
-			System.out.println("\nMaybe next time!\nUNO terminated!");
+			System.out.println("\nMaybe next time!");
 		}
+		
+		System.out.println("\nUNO terminated!");
+		
 		readInput.close();
 	}
 
@@ -113,11 +102,6 @@ public class MyUnoApplication {
 				myCards.addWildCard((WildCard) aDrawedCard);
 			}
 		}
-
-		System.out.println("\nYour hand:");
-		System.out.print(myCards.getMyNumberedCards());
-		System.out.print(myCards.getMySpecialCards());
-		System.out.print(myCards.getMyWildCards());
 	}
 
 	/**
@@ -145,7 +129,42 @@ public class MyUnoApplication {
 	 */
 	private static void lastPlayedCard() {
 		Object lastPlayedCard = deck.listOfCards.remove(0);
+		
 		playedCards.add(lastPlayedCard);
+		
 		System.out.println("Last played card: " + lastPlayedCard);
 	}
+	
+	private static void printMyHand() {
+		System.out.println("\nYour hand:\n");
+		
+		int optionsIndex = 1;
+		
+		for (int i = 0; i < myCards.getMyNumberedCards().size(); i++) {
+			System.out.println(optionsIndex + ") " + myCards.getMyNumberedCards().get(i));
+			
+			optionsIndex++;
+			
+			
+		}
+		
+		for (int i = 0; i < myCards.getMySpecialCards().size(); i++) {
+			System.out.println(optionsIndex + ") " + myCards.getMySpecialCards().get(i));
+			
+			optionsIndex++;
+			
+			
+		}
+		
+		for (int i = 0; i < myCards.getMyWildCards().size(); i++) {
+			System.out.println(optionsIndex + ") " + myCards.getMyWildCards().get(i));
+			
+			optionsIndex++;
+			
+			
+		}
+		
+		System.out.println("\n\nPlease, select a card from your hand:");
+	}
+	
 }
