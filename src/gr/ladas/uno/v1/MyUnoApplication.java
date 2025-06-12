@@ -47,7 +47,7 @@ public class MyUnoApplication {
 				
 				userCardOption = readInput.next();
 				
-				while (!userCardOption.equals("*") && userCardOption.equals("1") && userCardOption.equals("2") && userCardOption.equals("3") && userCardOption.equals("4") && userCardOption.equals("5") && userCardOption.equals("6") && userCardOption.equals("7")) {
+				while (!userCardOption.equals("*") && !userCardOption.equals("1") && !userCardOption.equals("2") && !userCardOption.equals("3") && !userCardOption.equals("4") && !userCardOption.equals("5") && !userCardOption.equals("6") && !userCardOption.equals("7")) {
 					System.out.println("Wrong choice!\nPlease, try again!\n");
 					
 					userCardOption = readInput.next();
