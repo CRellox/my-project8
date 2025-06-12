@@ -15,9 +15,9 @@ public class MyHand {
 
 
     public MyHand() {
-        this.myNumberedCards = new ArrayList<>();
-        this.mySpecialCards = new ArrayList();
-        this.myWildCards = new ArrayList<>();
+        this.myNumberedCards = new ArrayList<NumberedCard>();
+        this.mySpecialCards = new ArrayList<SpecialCard>();
+        this.myWildCards = new ArrayList<WildCard>();
     }
 
     public ArrayList<NumberedCard> getMyNumberedCards() {
@@ -43,4 +43,15 @@ public class MyHand {
     public void addSpecialCard(SpecialCard aSpecialCard) {
         this.mySpecialCards.add(aSpecialCard);
     }
+    
+    public void removePlayedCard(Object playedCard) {
+    	if (playedCard instanceof WildCard) {
+    		myWildCards.remove(playedCard);
+    	} else if (playedCard instanceof SpecialCard) {
+    		mySpecialCards.remove(playedCard);
+    	} else if (playedCard instanceof NumberedCard) {
+    		myNumberedCards.remove(playedCard);
+    	}
+    }
+    
 }

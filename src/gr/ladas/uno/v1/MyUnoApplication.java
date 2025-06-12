@@ -4,7 +4,9 @@ import gr.ladas.uno.v1.model.NumberedCard;
 import gr.ladas.uno.v1.model.SpecialCard;
 import gr.ladas.uno.v1.model.WildCard;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
 
 public class MyUnoApplication {
@@ -12,7 +14,10 @@ public class MyUnoApplication {
 	private static MyHand myCards;
 	private static BotHand botCards;
 	private static ArrayList<Object> playedCards = new ArrayList<>();
+	private static HashMap<String, Object> optionsHolder = new HashMap<String, Object>();
+	
 	private final static Scanner readInput = new Scanner(System.in);
+	
 
 
 	public static void main(String[] args) {
@@ -22,12 +27,16 @@ public class MyUnoApplication {
 		String userOption = readInput.next();
 
 		while (!userOption.equals("y") && !userOption.equals("n") && !userOption.equals("Y") && !userOption.equals("N")) {
+			clearScren();
+			
 			System.out.println("Wrong choice!\nPlease, try again!\n");
 			
 			userOption = readInput.next();
 		}
 
 		if (userOption.equals("y")) {
+			clearScren();
+			
 			System.out.println("Welcome to UNO!\n");
 
 			initDeck();
@@ -48,26 +57,48 @@ public class MyUnoApplication {
 				userCardOption = readInput.next();
 				
 				while (!userCardOption.equals("*") && !userCardOption.equals("1") && !userCardOption.equals("2") && !userCardOption.equals("3") && !userCardOption.equals("4") && !userCardOption.equals("5") && !userCardOption.equals("6") && !userCardOption.equals("7")) {
+					clearScren();
+					
 					System.out.println("Wrong choice!\nPlease, try again!\n");
+					
+					printMyHand();
 					
 					userCardOption = readInput.next();
 				}
 				
 				if (!userCardOption.equals("*")) {
-					//TODO should play the selected card...
+					while (Integer.parseInt(userCardOption) > optionsHolder.size()) {
+						clearScren();
+						
+						System.out.println("Wrong choice!\nPlease, try again!\n");
+						
+						userCardOption = readInput.next();
+					}
+					
+					Object playedCard = optionsHolder.get(userCardOption);
+					
+					playedCards.add(playedCard);
+					
+					myCards.removePlayedCard(playedCard);
 					
 					//TODO bot should play as well...
 					
+					clearScren();
+					
 					System.out.println("Last played card: " + playedCards.get(playedCards.size() - 1));
+					
+					if (optionsHolder.size() == 1) {
+						break;
+					} else {
+						optionsHolder = new HashMap<String, Object>();
+					}
 				}
 			} while (userCardOption.equals("1") || userCardOption.equals("2") || userCardOption.equals("3") || userCardOption.equals("4") || userCardOption.equals("5") || userCardOption.equals("6") || userCardOption.equals("7"));
 			
-			System.out.println("\nBye for now!");
+			System.out.println("\nUno Ended\nBye for now!");
 		} else {
-			System.out.println("\nMaybe next time!");
+			System.out.println("\nMaybe next time!\nUNO terminated!");
 		}
-		
-		System.out.println("\nUNO terminated!");
 		
 		readInput.close();
 	}
@@ -141,30 +172,42 @@ public class MyUnoApplication {
 		int optionsIndex = 1;
 		
 		for (int i = 0; i < myCards.getMyNumberedCards().size(); i++) {
-			System.out.println(optionsIndex + ") " + myCards.getMyNumberedCards().get(i));
+			Object currentCard = myCards.getMyNumberedCards().get(i);
+			
+			System.out.println(optionsIndex + ") " + currentCard);
+			
+			optionsHolder.put(String.valueOf(optionsIndex), currentCard);
 			
 			optionsIndex++;
-			
-			
 		}
 		
 		for (int i = 0; i < myCards.getMySpecialCards().size(); i++) {
-			System.out.println(optionsIndex + ") " + myCards.getMySpecialCards().get(i));
+			Object currentCard = myCards.getMySpecialCards().get(i);
+			
+			System.out.println(optionsIndex + ") " + currentCard);
+			
+			optionsHolder.put(String.valueOf(optionsIndex), currentCard);
 			
 			optionsIndex++;
-			
-			
 		}
 		
 		for (int i = 0; i < myCards.getMyWildCards().size(); i++) {
-			System.out.println(optionsIndex + ") " + myCards.getMyWildCards().get(i));
+			Object currentCard = myCards.getMyWildCards().get(i);
+			
+			System.out.println(optionsIndex + ") " + currentCard);
+			
+			optionsHolder.put(String.valueOf(optionsIndex), currentCard);
 			
 			optionsIndex++;
-			
-			
 		}
 		
 		System.out.println("\n\nPlease, select a card from your hand:");
 	}
+	
+	private static void clearScren() {
+        for (int i = 0; i < 50; i++) {
+            System.out.println();
+        }
+    }
 	
 }
