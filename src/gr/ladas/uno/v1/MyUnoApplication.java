@@ -1,6 +1,5 @@
 package gr.ladas.uno.v1;
 
-import gr.ladas.uno.v1.model.Card;
 import gr.ladas.uno.v1.model.NumberedCard;
 import gr.ladas.uno.v1.model.SpecialCard;
 import gr.ladas.uno.v1.model.WildCard;
@@ -9,49 +8,40 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MyUnoApplication {
-	private final static Scanner scanner = new Scanner(System.in);
 	private static Deck deck;
 	private static MyHand myCards;
 	private static BotHand botCards;
 	private static ArrayList<Object> playedCards = new ArrayList<>();
+	private final static Scanner readInput = new Scanner(System.in);
 
 
 	public static void main(String[] args) {
-		String userOption;
-		String userCardOption;
-
-		Object lastPlayedCard = deck.listOfCards.remove(0);
-
-		userOption = scanner.next();
-		userCardOption = scanner.next();
-
 		System.out.println("UNO starting...\n");
 		System.out.println("\nDo you want to play? Type y/n");
 
+		String userOption = readInput.next();
+
 		while (!userOption.equals("y") && !userOption.equals("n") && !userOption.equals("Y") && !userOption.equals("N")) {
 			System.out.println("Wrong choice!\nPlease, try again!\n");
+			userOption = readInput.next();
 		}
 
 		if (userOption.equals("y")) {
 			System.out.println("Welcome to UNO!\n");
-			
+
 			initDeck();
+
+			lastPlayedCard();
+
+			System.out.println("\nYou play first!");
 
 			drawMyCards();
 
 			drawBotCards();
 
-			playedCards.add(lastPlayedCard);
-			System.out.println("Last played card: " + lastPlayedCard);
-			
-			System.out.println("\nYou play first!");
-
-			System.out.println("\nYour hand:");
-			System.out.print(myCards.getMyNumberedCards());
-			System.out.print(myCards.getMySpecialCards());
-			System.out.print(myCards.getMyWildCards());
-
 			System.out.println("\n\nPlease, select a card from your hand!");
+
+			String userCardOption = readInput.next();
 
 			switch (userCardOption) {
 				case "1":
@@ -90,21 +80,25 @@ public class MyUnoApplication {
 		} else {
 			System.out.println("\nMaybe next time!\nUNO terminated!");
 		}
-		scanner.close();
-	}
-	
-	private static void initDeck() {
-		deck = new Deck();
-		
-		deck.createListOfAllCards();
-		
-		deck.shuffleDeck();
-		
-		//System.out.println("Printing deck...\n");
-		
-		//System.out.println(deck.getListOfCards());
+		readInput.close();
 	}
 
+	/**
+	 * Creates and shuffles the cards of the deck.
+	 */
+	private static void initDeck() {
+		deck = new Deck();
+
+		deck.createListOfAllCards();
+
+		deck.shuffleDeck();
+	}
+
+	/**
+	 * At the start of the game, player receives 7 random cards
+	 * from the shuffled deck.
+	 * Also, prints the received cards.
+	 */
 	private static void drawMyCards() {
 		myCards = new MyHand();
 
@@ -119,8 +113,17 @@ public class MyUnoApplication {
 				myCards.addWildCard((WildCard) aDrawedCard);
 			}
 		}
+
+		System.out.println("\nYour hand:");
+		System.out.print(myCards.getMyNumberedCards());
+		System.out.print(myCards.getMySpecialCards());
+		System.out.print(myCards.getMyWildCards());
 	}
 
+	/**
+	 * At the start of the game, bot receives 7 random cards
+	 * from the shuffled deck.
+	 */
 	private static void drawBotCards() {
 		botCards = new BotHand();
 
@@ -135,5 +138,14 @@ public class MyUnoApplication {
 				botCards.addWildCard((WildCard) aDrawedCard);
 			}
 		}
+	}
+
+	/**
+	 * Displays the lastly card played.
+	 */
+	private static void lastPlayedCard() {
+		Object lastPlayedCard = deck.listOfCards.remove(0);
+		playedCards.add(lastPlayedCard);
+		System.out.println("Last played card: " + lastPlayedCard);
 	}
 }
