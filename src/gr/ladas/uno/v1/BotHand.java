@@ -43,4 +43,13 @@ public class BotHand {
     public void addSpecialCard(SpecialCard aSpecialCard) {
         this.mySpecialCards.add(aSpecialCard);
     }
+    public void removePlayedBotsCard(Object playedCard) {
+        if (playedCard instanceof WildCard) {
+            myWildCards.remove(playedCard);
+        } else if (playedCard instanceof SpecialCard) {
+            mySpecialCards.remove(playedCard);
+        } else if (playedCard instanceof NumberedCard) {
+            myNumberedCards.remove(playedCard);
+        }
+    }
 }

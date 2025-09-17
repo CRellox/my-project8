@@ -3,8 +3,8 @@ package gr.ladas.uno.v1;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import gr.ladas.uno.v1.enums.Color;
-import gr.ladas.uno.v1.enums.Effect;
+import gr.ladas.uno.v1.core.enums.Color;
+import gr.ladas.uno.v1.core.enums.Effect;
 import gr.ladas.uno.v1.model.NumberedCard;
 import gr.ladas.uno.v1.model.SpecialCard;
 import gr.ladas.uno.v1.model.WildCard;

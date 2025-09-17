@@ -4,7 +4,6 @@ import gr.ladas.uno.v1.model.NumberedCard;
 import gr.ladas.uno.v1.model.SpecialCard;
 import gr.ladas.uno.v1.model.WildCard;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Scanner;
@@ -13,8 +12,9 @@ public class MyUnoApplication {
 	private static Deck deck;
 	private static MyHand myCards;
 	private static BotHand botCards;
-	private static ArrayList<Object> playedCards = new ArrayList<>();
-	private static HashMap<String, Object> optionsHolder = new HashMap<String, Object>();
+	private static final ArrayList<Object> playedCards = new ArrayList<>();
+    private static final ArrayList<Object> playedBotsCards = new ArrayList<>();
+	private static HashMap<String, Object> optionsHolder = new HashMap<>();
 	
 	private final static Scanner readInput = new Scanner(System.in);
 	
@@ -26,8 +26,9 @@ public class MyUnoApplication {
 
 		String userOption = readInput.next();
 
-		while (!userOption.equals("y") && !userOption.equals("n") && !userOption.equals("Y") && !userOption.equals("N")) {
-			clearScren();
+		while (!userOption.equals("y") && !userOption.equals("n") && !userOption.equals("Y")
+                && !userOption.equals("N")) {
+			clearScreen();
 			
 			System.out.println("Wrong choice!\nPlease, try again!\n");
 			
@@ -35,7 +36,8 @@ public class MyUnoApplication {
 		}
 
 		if (userOption.equals("y")) {
-			clearScren();
+
+			clearScreen();
 			
 			System.out.println("Welcome to UNO!\n");
 
@@ -43,7 +45,7 @@ public class MyUnoApplication {
 
 			lastPlayedCard();
 
-			System.out.println("\nYou play first!");
+			System.out.println("`\nYou play first!");
 
 			drawMyCards();
 
@@ -56,8 +58,8 @@ public class MyUnoApplication {
 				
 				userCardOption = readInput.next();
 				
-				while (!userCardOption.equals("*") && !userCardOption.equals("1") && !userCardOption.equals("2") && !userCardOption.equals("3") && !userCardOption.equals("4") && !userCardOption.equals("5") && !userCardOption.equals("6") && !userCardOption.equals("7")) {
-					clearScren();
+				while (!userCardOption.equals("*") && !userCardOption.matches("[1-7]")) {
+					clearScreen();
 					
 					System.out.println("Wrong choice!\nPlease, try again!\n");
 					
@@ -68,7 +70,7 @@ public class MyUnoApplication {
 				
 				if (!userCardOption.equals("*")) {
 					while (Integer.parseInt(userCardOption) > optionsHolder.size()) {
-						clearScren();
+						clearScreen();
 						
 						System.out.println("Wrong choice!\nPlease, try again!\n");
 						
@@ -80,21 +82,20 @@ public class MyUnoApplication {
 					playedCards.add(playedCard);
 					
 					myCards.removePlayedCard(playedCard);
-					
+
 					//TODO bot should play as well...
 					
-					clearScren();
+					clearScreen();
 					
-					System.out.println("Last played card: " + playedCards.get(playedCards.size() - 1));
+					System.out.println("Last played card: " + playedCards.getLast());
 					
 					if (optionsHolder.size() == 1) {
 						break;
 					} else {
-						optionsHolder = new HashMap<String, Object>();
+						optionsHolder = new HashMap<>();
 					}
 				}
-			} while (userCardOption.equals("1") || userCardOption.equals("2") || userCardOption.equals("3") || userCardOption.equals("4") || userCardOption.equals("5") || userCardOption.equals("6") || userCardOption.equals("7"));
-			
+			} while (userCardOption.matches("[1-7]"));
 			System.out.println("\nUno Ended\nBye for now!");
 		} else {
 			System.out.println("\nMaybe next time!\nUNO terminated!");
@@ -123,14 +124,14 @@ public class MyUnoApplication {
 		myCards = new MyHand();
 
 		for (int i = 0; i < 7; i++) {
-			Object aDrawedCard = deck.getListOfCards().remove(0);
+			Object aDrawnCard = deck.getListOfCards().removeFirst();
 
-			if (aDrawedCard instanceof NumberedCard) {
-				myCards.addNumberedCard((NumberedCard) aDrawedCard);
-			} else if (aDrawedCard instanceof SpecialCard) {
-				myCards.addSpecialCard((SpecialCard) aDrawedCard);
-			} else if (aDrawedCard instanceof WildCard) {
-				myCards.addWildCard((WildCard) aDrawedCard);
+			if (aDrawnCard instanceof NumberedCard) {
+				myCards.addNumberedCard((NumberedCard) aDrawnCard);
+			} else if (aDrawnCard instanceof SpecialCard) {
+				myCards.addSpecialCard((SpecialCard) aDrawnCard);
+			} else if (aDrawnCard instanceof WildCard) {
+				myCards.addWildCard((WildCard) aDrawnCard);
 			}
 		}
 	}
@@ -143,14 +144,14 @@ public class MyUnoApplication {
 		botCards = new BotHand();
 
 		for (int i = 0; i < 7; i++) {
-			Object aDrawedCard = deck.getListOfCards().remove(0);
+			Object aDrawnCard = deck.getListOfCards().removeFirst();
 
-			if (aDrawedCard instanceof NumberedCard) {
-				botCards.addNumberedCard((NumberedCard) aDrawedCard);
-			} else if (aDrawedCard instanceof SpecialCard) {
-				botCards.addSpecialCard((SpecialCard) aDrawedCard);
-			} else if (aDrawedCard instanceof WildCard) {
-				botCards.addWildCard((WildCard) aDrawedCard);
+			if (aDrawnCard instanceof NumberedCard) {
+				botCards.addNumberedCard((NumberedCard) aDrawnCard);
+			} else if (aDrawnCard instanceof SpecialCard) {
+				botCards.addSpecialCard((SpecialCard) aDrawnCard);
+			} else if (aDrawnCard instanceof WildCard) {
+				botCards.addWildCard((WildCard) aDrawnCard);
 			}
 		}
 	}
@@ -159,13 +160,13 @@ public class MyUnoApplication {
 	 * Displays the lastly card played.
 	 */
 	private static void lastPlayedCard() {
-		Object lastPlayedCard = deck.listOfCards.remove(0);
+		Object lastPlayedCard = deck.listOfCards.removeFirst();
 		
 		playedCards.add(lastPlayedCard);
 		
 		System.out.println("Last played card: " + lastPlayedCard);
 	}
-	
+
 	private static void printMyHand() {
 		System.out.println("\nYour hand:\n");
 		
@@ -203,11 +204,43 @@ public class MyUnoApplication {
 		
 		System.out.println("\n\nPlease, select a card from your hand:");
 	}
-	
-	private static void clearScren() {
+
+	private static void printBotsHand() {
+		int optionsIndex = 1;
+
+		for (int i = 0; i < botCards.getMyNumberedCards().size(); i++) {
+			Object currentCard = botCards.getMyNumberedCards().get(i);
+
+			System.out.println(optionsIndex + ") " + currentCard);
+			optionsHolder.put(String.valueOf(optionsIndex), currentCard);
+
+			optionsIndex++;
+		}
+
+		for (int i = 0; i < botCards.getMySpecialCards().size(); i++) {
+			Object currentCard = botCards.getMySpecialCards().get(i);
+
+			System.out.println(optionsIndex + ") " + currentCard);
+
+			optionsHolder.put(String.valueOf(optionsIndex), currentCard);
+
+			optionsIndex++;
+		}
+
+		for (int i = 0; i < botCards.getMyWildCards().size(); i++) {
+			Object currentCard = botCards.getMyWildCards().get(i);
+
+			System.out.println(optionsIndex + ") " + currentCard);
+
+			optionsHolder.put(String.valueOf(optionsIndex), currentCard);
+
+			optionsIndex++;
+		}
+	}
+
+	private static void clearScreen() {
         for (int i = 0; i < 50; i++) {
             System.out.println();
         }
     }
-	
 }

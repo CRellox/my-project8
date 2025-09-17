@@ -1,4 +1,4 @@
-package gr.ladas.uno.v1.enums;
+package gr.ladas.uno.v1.core.enums;
 
 public enum Effect {
 	

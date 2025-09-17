@@ -1,4 +1,4 @@
-package gr.ladas.uno.v1.exceptions;
+package gr.ladas.uno.v1.core.exceptions;
 
 public class WrongSpecialCardException extends Exception {
 

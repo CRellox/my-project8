@@ -1,6 +1,6 @@
 package gr.ladas.uno.v1.model;
 
-import gr.ladas.uno.v1.enums.Effect;
+import gr.ladas.uno.v1.core.enums.Effect;
 
 public class WildCard extends Card {
 
