@@ -17,7 +17,7 @@ public class MyUnoApplication {
 	private static HashMap<String, Object> optionsHolder = new HashMap<>();
 	
 	private final static Scanner readInput = new Scanner(System.in);
-	
+
 
 
 	public static void main(String[] args) {
@@ -87,8 +87,8 @@ public class MyUnoApplication {
 					
 					clearScreen();
 					
-					System.out.println("Last played card: " + playedCards.getLast());
-					
+					System.out.println("Last played card: " + playedCards.getLast() + "\n\nSecond player's turn.");
+
 					if (optionsHolder.size() == 1) {
 						break;
 					} else {
